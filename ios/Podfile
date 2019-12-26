@@ -2,11 +2,13 @@ platform :ios, '10.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 # To override the React Native Firebase iOS SDK versions used uncomment any of the below and change the version
-# $FirebaseSDKVersion = '6.8.1'
+# $FirebaseSDKVersion = '6.13.0'
 # $FabricSDKVersion = '1.6.0'
 # $CrashlyticsSDKVersion = '3.1.0'
 
 target 'WELE' do
+  platform :ios, '10.0'
+
   # Pods for WELE
   pod 'React', :path => '../node_modules/react-native/'
   pod 'React-Core', :path => '../node_modules/react-native/React'
@@ -30,9 +32,14 @@ target 'WELE' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'react-native-track-player', :path => '../node_modules/react-native-track-player'
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
 
-  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+
+
+
+
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
   target 'WELETests' do
     inherit! :search_paths
