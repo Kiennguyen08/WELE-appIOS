@@ -187,6 +187,8 @@ PODS:
     - FBSDKShareKit/Share (= 5.8.0)
   - FBSDKShareKit/Share (5.8.0):
     - FBSDKCoreKit (~> 5.0)
+  - Firebase/Analytics (6.13.0):
+    - Firebase/Core
   - Firebase/Auth (6.13.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.4.0)
@@ -450,7 +452,7 @@ PODS:
     - Firebase/Messaging (~> 6.13.0)
     - React
     - RNFBApp
-  - RNFS (2.16.2):
+  - RNFS (2.15.2):
     - React
   - RNGestureHandler (1.4.1):
     - React
@@ -470,8 +472,13 @@ PODS:
 DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
+  - Firebase/Analytics
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - GoogleSignIn
   - React (from `../node_modules/react-native/`)
   - React-Core (from `../node_modules/react-native/React`)
   - React-cxxreact (from `../node_modules/react-native/ReactCommon/cxxreact`)
@@ -689,7 +696,7 @@ SPEC CHECKSUMS:
   RNFBDatabase: 267f476097111054553ecb99208201945961efa5
   RNFBFirestore: 5de4ae898df51a3ecc16a45db15019836c5cec87
   RNFBMessaging: be0b936394416ec5503add603f2c0a641c353063
-  RNFS: 0d4191b1052bef9ce70deff00a5b4169c62bbd9b
+  RNFS: 54da03c2b7d862c42ea3ca8c7f86f892760a535a
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
   RNGoogleSignin: a10b849c165088c737d4465de6c2062f24d06002
   RNReanimated: 6abbbae2e5e72609d85aabd92a982a94566885f1
@@ -698,6 +705,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   yoga: 312528f5bbbba37b4dcea5ef00e8b4033fdd9411
 
-PODFILE CHECKSUM: 46248e1c7fb0d7e76f359fb1c6187319f45e3f0e
+PODFILE CHECKSUM: 6c97b86a07224066cb917897e7dc10696ada173c
 
 COCOAPODS: 1.7.4
