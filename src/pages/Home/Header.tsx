@@ -7,7 +7,7 @@ import { CustomTheme } from '@store/theme/ThemeWrapper'
 
 //@ts-ignore
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, SafeAreaView} from 'react-native';
 import { useNotifications, useUnreadNotificationNumber } from '@store/notification/hooks';
 import { updateNotifications } from '@store/notification/functions';
 import { updateLastSeenOfUser } from '@/store/user/function';
@@ -21,16 +21,16 @@ const StyledFeatherIcon = styled(FeatherIcon)`
   margin: 8px 20px 0px 0px;
 `;
 
-const HeaderWrapper = styled.View<{ theme: CustomTheme }>`
+const HeaderWrapper = styled.SafeAreaView<{ theme: CustomTheme }>`
   background-color: ${props => props.theme.backgroundColor}
   height: 40px;
   flex-direction: row;
   justify-content: flex-end;
   padding: 0;
-  
+
 `;
 
-const StyledView = styled.View`
+const StyledView = styled.SafeAreaView`
     position: relative;
 `
 
@@ -74,9 +74,9 @@ const HeaderMemo = React.memo((props: Props) => {
             </StyledView>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => nav.navigate('UserProfile')}>
-            <View>
+            <SafeAreaView>
                 <StyledFeatherIcon name={'settings'} />
-            </View>
+            </SafeAreaView>
         </TouchableOpacity>
     </HeaderWrapper>
 },(prev, next)=> prev.currentUser.id === next.currentUser.id && prev.unreadNumber === next.unreadNumber)
@@ -84,5 +84,3 @@ const HeaderMemo = React.memo((props: Props) => {
 
 
 export default Header
-
-

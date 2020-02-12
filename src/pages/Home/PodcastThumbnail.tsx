@@ -8,7 +8,7 @@ import PodcastType from "@/store/podcast/types";
 import { getPodcast } from "@/store/podcast/functions";
 
 
-const StyledPodcastWrapper = styled.View<{size: 'big' | 'medium',theme: CustomTheme}>`
+const StyledPodcastWrapper = styled.SafeAreaView<{size: 'big' | 'medium',theme: CustomTheme}>`
     background-color: ${props=> props.theme.backgroundColor};
     height: ${props =>
       props.size === "big"
@@ -25,12 +25,12 @@ const StyledPodcastWrapper = styled.View<{size: 'big' | 'medium',theme: CustomTh
     padding-top: 10px;
 `;
 
-const StyledPodcastContent = styled.View`
+const StyledPodcastContent = styled.SafeAreaView`
   flex: 3;
   padding: 20px 10px 10px 10px;
 `;
 
-const StyledImageWrapper = styled.View`
+const StyledImageWrapper = styled.SafeAreaView`
   flex: 2;
 `;
 

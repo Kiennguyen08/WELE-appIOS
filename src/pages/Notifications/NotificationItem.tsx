@@ -12,7 +12,7 @@ const StyledImage = styled.Image`
 
 `;
 
-const StyledImageWrapper = styled.View`
+const StyledImageWrapper = styled.SafeAreaView`
   position: relative;
   flex: 1;
   align-items: center;
@@ -45,7 +45,7 @@ const StyledTimeAgo = styled.Text`
     flex: 1;
 `
 
-const StyledContentWrapper = styled.View`
+const StyledContentWrapper = styled.SafeAreaView`
     flex-direction: column;
     flex: 5;
 `

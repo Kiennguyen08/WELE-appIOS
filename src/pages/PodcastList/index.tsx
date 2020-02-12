@@ -20,25 +20,25 @@ import { NavigationContext } from 'react-navigation';
 import SearchBox from './Searchbox';
 
 const Wrapper = styled.ScrollView<{ theme: CustomTheme }>`
-  height: 100%;
+  height: 80%;
   width: 100%;
   background-color: ${props => props.theme.backgroundColor};
 `;
 
-const StyledBodyWrapper = styled.View<{ theme: CustomTheme }>`
+const StyledBodyWrapper = styled.SafeAreaView<{ theme: CustomTheme }>`
   background-color: ${props => props.theme.backgroundColor}
   flex: 9;
   align-items: flex-start;
 `;
 
 
-const StyledSection = styled.View`
+const StyledSection = styled.SafeAreaView`
   width: 100%;
   margin: 0 ;
 `;
 
 
-const StyledSectionContent = styled.View``;
+const StyledSectionContent = styled.SafeAreaView``;
 
 const matchSearchString = (searchString: string, podcast: PodcastType) => {
   const rSearchString = searchString.replace(/\s/g, '').toLowerCase()

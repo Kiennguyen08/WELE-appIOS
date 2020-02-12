@@ -13,6 +13,10 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "RNGoogleSignin.h"
 
+#import <React/RCTLinkingManager.h>
+
+
+
 @import Firebase;
 
 @implementation AppDelegate
@@ -57,6 +61,8 @@
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
 }
+
+
 
 
 

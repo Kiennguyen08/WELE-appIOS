@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { View, TouchableOpacity , ProgressBarAndroid } from 'react-native'
+import { View, TouchableOpacity , ProgressBarAndroid, SafeAreaView } from 'react-native'
 import styled from "styled-components/native"
 
 import EntypoIcon from "react-native-vector-icons/Entypo";
@@ -8,7 +8,7 @@ import { NavigationContext } from 'react-navigation';
 import { usePlayer } from '@/store/player/hooks';
 import {CustomTheme, ThemeMode} from '@store/theme/ThemeWrapper'
 
-const StyledView = styled.View`
+const StyledView = styled.SafeAreaView`
     height: 32px;
     width: 100%;
     flex-direction: row;
@@ -16,7 +16,7 @@ const StyledView = styled.View`
     align-items: center;
     margin: 0;
 `
-const Wrapper = styled.View<{theme: CustomTheme}>`
+const Wrapper = styled.SafeAreaView<{theme: CustomTheme}>`
     height: 100%;
     width: 100%;
     background-color: ${props=> props.theme.backgroundColor};
@@ -77,7 +77,7 @@ const PlayerThumbnail = (props: any)=>{
 
             {track && (
                 <React.Fragment>
-                    <StyledProgressBarAndroid styleAttr="Horizontal" indeterminate={false} 
+                    <StyledProgressBarAndroid styleAttr="Horizontal" indeterminate={false}
                     progress={ ( !position || position.duration <= 0 ) ? 0 : position.position /position.duration} />
                     <StyledView>
                         <TouchableOpacity onPress = {navigateToPlayer}>
@@ -88,10 +88,10 @@ const PlayerThumbnail = (props: any)=>{
                         </TouchableOpacity>
                         <StyledPlayButton onPress ={()=>{
                             globalPlayer.playPause()
-                        }}> 
+                        }}>
                             <StyledEntypoIcon name={globalPlayer.isPlaying(state) ? "controller-paus" : "controller-play"} />
                         </StyledPlayButton>
-                        
+
                     </StyledView>
                 </React.Fragment>
             )}

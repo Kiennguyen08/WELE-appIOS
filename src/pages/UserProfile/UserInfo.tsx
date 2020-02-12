@@ -5,15 +5,15 @@ import { UserType } from '@/store/user/types'
 import { ThemeMode, CustomTheme } from '@/store/theme/ThemeWrapper';
 import { useCurrentUser } from '@/store/user/hooks';
 
-const StyledSection = styled.View`
+const StyledSection = styled.SafeAreaView`
   width: 100%;
   margin: 0 ;
 `;
 
 
-const StyledSectionContent = styled.View``;
+const StyledSectionContent = styled.SafeAreaView``;
 
-const StyledUserWrapper = styled.View<{ size: 'big' | 'medium' | 'small' }>`
+const StyledUserWrapper = styled.SafeAreaView<{ size: 'big' | 'medium' | 'small' }>`
   width: 100%;
   flex-direction: column;
   border-style: solid;
@@ -37,7 +37,7 @@ const StyledName = styled.Text<{ theme: CustomTheme }>`
   text-align: center;
   font-size: 20px;
   letter-spacing: 3px;
-  font-weight: 800; 
+  font-weight: 800;
   color: ${props => props.theme.textColorH1};
 `
 const StyledEmail = styled.Text<{ theme: CustomTheme }>`
@@ -45,7 +45,7 @@ const StyledEmail = styled.Text<{ theme: CustomTheme }>`
   text-align: center;
   font-size: 18px;
   letter-spacing: 1px;
-  font-weight: 700; 
+  font-weight: 700;
   color: ${props => props.theme.textColorH2};
 `
 interface Props {

@@ -12,7 +12,7 @@ const StyledSlider = styled(Slider)`
   height: 20px;
 `;
 
-const StyledViewTimeIndicator = styled.View`
+const StyledViewTimeIndicator = styled.SafeAreaView`
   justify-content: space-between;
   flex-direction: row;
   width: 94%;
@@ -39,7 +39,7 @@ interface Props {
 }
 
 const PlayerSlider = React.memo((props: Props) => {
-  
+
   return (
     <React.Fragment>
       <StyledSlider

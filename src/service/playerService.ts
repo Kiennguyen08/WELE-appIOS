@@ -42,8 +42,8 @@ class GlobalPlayer {
 
         await TrackPlayer.setupPlayer()
 
-        await TrackPlayer.updateOptions({
-            stopWithApp: true,
+        TrackPlayer.updateOptions({
+            stopWithApp: false,
             jumpInterval: playback,
             capabilities: [
                 TrackPlayer.CAPABILITY_PAUSE,
@@ -71,7 +71,7 @@ class GlobalPlayer {
     }
 
     addStateListener() {
-        TrackPlayer.addEventListener('playback-state', (event) => {
+        TrackPlayer.addEventListener('playback-state', async (event) => {
             updateState(event.state)
         });
     }
@@ -89,36 +89,54 @@ class GlobalPlayer {
         return await TrackPlayer.getTrack(id)
     }
 
-    isPlaying(state: number) {
+    async isPlaying(state: number) {
         return PLAYING_STATE.indexOf(state) >= 0
     }
 
     async getPosition() {
         const position = await TrackPlayer.getPosition()
         const duration = await TrackPlayer.getDuration()
-
         return { position: position ? position : 0, duration: duration ? duration : 0 }
     }
 
     async playPause() {
         const state = await TrackPlayer.getState()
+        console.log(state, "State 1")
         if (state === TrackPlayer.STATE_PLAYING) {
             updateState(Number(TrackPlayer.STATE_PAUSED))
+            console.log("Play1")
             await TrackPlayer.pause()
+
         } else if (state === TrackPlayer.STATE_PAUSED) {
             updateState(Number(TrackPlayer.STATE_PLAYING))
+            console.log("Pause")
             await TrackPlayer.play()
+
+        } else if (state === TrackPlayer.STATE_STOPPED) {
+            console.log("Stopp")
+            updateState(Number(TrackPlayer.STATE_PLAYING))
+            TrackPlayer.play()
+
+        } else if (state === TrackPlayer.STATE_NONE) {
+            console.log("FUCK UP")
         }
+        else{
+            console.log("FUCK UP 2")
+
+        }
+
     }
 
     async pause() {
-        await TrackPlayer.pause()
+        return await TrackPlayer.pause()
     }
 
     async addTrack(podcast: PodcastType, uri: string) {
+        // uri = podcast.downloadLink
         await TrackPlayer.add({
             id: podcast.id,
             url: uri,
+            // url: "http://download1586.mediafire.com/7jszgoii0afg/h262t0wb5c022e6/ESL+10155+SpotlightEnglish+Powerful+Princeses+of+the+world.mp3",
             title: podcast.name,
             artist: podcast.source,
             artwork: podcast.imgUrl,
@@ -128,6 +146,9 @@ class GlobalPlayer {
         await updatePodcast({ ...podcast, uri })
 
         await TrackPlayer.skip(podcast.id)
+
+        console.log(uri, "uri here")
+        console.log(podcast.downloadLink,"Link download here")
     }
 
     async playBack(playback: number) {
@@ -143,46 +164,54 @@ class GlobalPlayer {
     async seekTo(position: number) {
         await TrackPlayer.seekTo(position)
         const newPosition = await this.getPosition()
-
+        console.log(newPosition.duration,'duration')
         updatePosition(newPosition.duration, newPosition.position)
     }
 
     async pickTrack(podcast: PodcastType) {
 
-        
+
         if (podcast.uri) {
-        
+            //console.log('check res', podcast.uri)
             try{
-                const res =await RNFS.stat(podcast.uri)
+                const res = await RNFS.stat(podcast.uri)
                 if(res && res.isFile()){
-                    await this.addTrack(podcast, podcast.uri)
-                    await TrackPlayer.play()
-                    return podcast.uri
+                    await this.addTrack(podcast, podcast.uri).then(TrackPlayer.play())
+                    // await TrackPlayer.play()
+                    console.log("playing HERE")
+
+                    return podcast.downloadLink
+
+
                 }
             }catch(e){
-                
+                console.log("Error here in URI",e)
             }
-      
-            
+
+
         }
 
         try {
             const res = await DocumentPicker.pick({
-                type: [DocumentPicker.types.audio]
+                type: [DocumentPicker.types.allFiles]
             })
+
+            console.log('check res', res)
 
             if (res && Number(res.size) === podcast.fileSize) {
 
                 let correctPath = res.uri
-                if (res.uri.indexOf('com.android.providers') !== -1) {
-                    const stats = await RNGRP.getRealPathFromURI(res.uri)// Relative path obtained from document picker
-                    var str1 = "file://";
-                    var str2 = stats
-                    correctPath = str1.concat(str2);
-                }
+                // if (res.uri.indexOf('com.android.providers') !== -1) {
+                //     const stats = await RNGRP.getRealPathFromURI(res.uri)// Relative path obtained from document picker
+                //     var str1 = "file://";
+                //     var str2 = stats
+                //     correctPath = str1.concat(str2);
+                // }
 
-                await this.addTrack(podcast, correctPath)
-                await TrackPlayer.play()
+                await this.addTrack(podcast, correctPath).then(TrackPlayer.play())
+                //await TrackPlayer.play()
+                //await TrackPlayer.play()
+                console.log(correctPath,'correct path')
                 return correctPath
             } else {
                 throw Error('File Size is invalid !! \n Please choose another file \n or download file again ! ')
@@ -200,5 +229,3 @@ class GlobalPlayer {
 
 const globalPlayer = new GlobalPlayer()
 export default globalPlayer
-
-

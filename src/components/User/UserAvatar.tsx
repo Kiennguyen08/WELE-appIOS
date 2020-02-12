@@ -12,18 +12,18 @@ const StyledAvatar = styled.Image`
 
 `;
 
-const StyledWrapper = styled.View`
+const StyledWrapper = styled.SafeAreaView`
   height: 36px;
   width: 36px;
   position: relative;
 `
 
-const StyledDot = styled.View<{ isOnline: boolean }>`
+const StyledDot = styled.SafeAreaView<{ isOnline: boolean }>`
   position: absolute;
 
   border: 2px solid #fff;
   border-radius: 5px;
-  right: 0px; 
+  right: 0px;
   bottom: 0px;
   height: 10px;
   width: 10px;

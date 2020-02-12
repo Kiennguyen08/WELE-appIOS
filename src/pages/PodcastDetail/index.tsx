@@ -12,7 +12,7 @@ import React, { useState, useContext, useCallback } from 'react';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 //@ts-ignore
 import { connect } from "react-redux";
-import { View, TouchableOpacity, Alert, Linking } from 'react-native';
+import { View, TouchableOpacity, Alert, Linking, SafeAreaView } from 'react-native';
 
 import styled from 'styled-components/native';
 import globalPlayer from '@/service/playerService';
@@ -27,26 +27,26 @@ import { CustomTheme, ThemeMode } from '@store/theme/ThemeWrapper'
 import { is } from '@babel/types';
 
 const Wrapper = styled.ScrollView<{ theme: CustomTheme }>`
-  height: 100%;
+  height: 80%;
   width: 100%;
   background-color: ${props => props.theme.backgroundColor};
 `;
 
-const HeaderWrapper = styled.View`
+const HeaderWrapper = styled.SafeAreaView`
   height: 32px;
   flex-direction: row;
   justify-content: flex-start;
   padding: 0;
-  
+
 `;
-const StyledBodyWrapper = styled.View`
+const StyledBodyWrapper = styled.SafeAreaView`
   flex: 9;
   align-items: flex-start;
   padding: 10px 10px 10px 20px;
 `;
 
 
-const StyledContent = styled.View`
+const StyledContent = styled.SafeAreaView`
   width: 100%;
   margin: 0 ;
   flex-direction: column;
@@ -54,7 +54,7 @@ const StyledContent = styled.View`
 
 
 
-const StyledUserWrapper = styled.View`
+const StyledUserWrapper = styled.SafeAreaView`
   width: 100%;
   flex-direction: column;
   border-style: solid;
@@ -85,7 +85,7 @@ const StyledName = styled.Text<{ theme: CustomTheme }>`
   text-align: left;
   font-size: 20px;
   letter-spacing: 1px;
-  font-weight: bold; 
+  font-weight: bold;
   margin-bottom: 20px;
   color: ${props => props.theme.textColorH1};
 `
@@ -115,7 +115,7 @@ const trimText = (text: string) => {
   return text.substr(0, Math.min(text.length, 180)) + '...';
 }
 
-const StyledDescriptionWrapper = styled.View`
+const StyledDescriptionWrapper = styled.SafeAreaView`
     flex-direction: row;
     flex-wrap: wrap;
     flex: 1;
@@ -128,11 +128,11 @@ const StyledReadmore = styled.Text<{ theme: CustomTheme }>`
     color: ${props => props.theme.textColorH1};
 `;
 
-const StyledButtonWrapper = styled.View`
+const StyledButtonWrapper = styled.SafeAreaView`
     flex-direction: row;
     width:100%;
 `
-const StyledPlayButton = styled.View`
+const StyledPlayButton = styled.SafeAreaView`
     background-color: #25bf1d;
     width: 100px;
     height: 36px;
@@ -142,7 +142,7 @@ const StyledPlayButton = styled.View`
     margin-bottom: 10px;
 `
 
-const StyledDownloadButton = styled.View`
+const StyledDownloadButton = styled.SafeAreaView`
     background-color: #e0d051;
     width: 160px;
     height: 36px;
@@ -224,9 +224,9 @@ const PodcastDetailMemo = React.memo((props: Props) => {
             <TouchableOpacity onPress={() => {
               nav.navigate('Home')
             }}>
-              <View>
+              <SafeAreaView>
                 <StyledAntDesignIcon name={'arrowleft'} />
-              </View>
+              </SafeAreaView>
             </TouchableOpacity>
           </HeaderWrapper>
 
@@ -306,4 +306,3 @@ const mapDispatchToProps = (dispatch: any) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(PodcastDetail);
-

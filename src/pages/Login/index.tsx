@@ -8,7 +8,7 @@
  */
 
 import React, { useState, useCallback } from 'react'
-import { TouchableOpacity, Alert, View } from "react-native";
+import { TouchableOpacity, Alert, View, SafeAreaView } from "react-native";
 import FeatherIcon from 'react-native-vector-icons/FontAwesome'
 import styled from 'styled-components/native';
 import { setCurrentUser } from '@store/user/function';
@@ -20,7 +20,7 @@ import { useCurrentUser } from '@/store/user/hooks';
 import useAsyncFn from 'react-use/lib/useAsyncFn';
 import LoadingComponent from '@/components/Loading/Loading';
 
-const Wrapper = styled.View<{ theme: CustomTheme }>`
+const Wrapper = styled.SafeAreaView<{ theme: CustomTheme }>`
   height: 100%;
   width: 100%;
   flex-direction: column;
@@ -39,7 +39,7 @@ const StyledLogoImage = styled.Image<{ theme: CustomTheme }>`
 `;
 
 
-const StyledButtonWrapper = styled.View`
+const StyledButtonWrapper = styled.SafeAreaView`
     flex: 1;
 `
 
@@ -98,10 +98,12 @@ const Login = () => {
   const [loginState, fetchLogin] = useAsyncFn(async () => {
     // Login with permissions
     const user = await loginWithFacebook()
+
     if (user.additionalUserInfo.isNewUser) {
       setFirstTime(true)
       setUser(user)
     } else {
+
       return await setCurrentUser({
         id: user.user.uid,
         displayName: user.user.displayName ? user.user.displayName : '',
@@ -174,7 +176,7 @@ const Login = () => {
   }
 
 
-  const condition = (currentUser && (!currentUser.weleEmail || firstTime))
+  const condition = (currentUser && (!currentUser.weleEmail)) || firstTime
 
 
   return (
@@ -205,7 +207,7 @@ const Login = () => {
 
         {(loginState.loading || loginGoogleState.loading) ? <LoadingComponent /> :
           <React.Fragment>
-            <LoginWithGoogle loginWithGoogle={onLoginWithGoogleHandle} />
+            {}
             {
               condition && (
                 <React.Fragment>
@@ -220,14 +222,15 @@ const Login = () => {
             }
 
             {!condition && (
-              <View
+              <React.Fragment
               // animation="bounce" easing="ease-out" iterationCount={Infinity}
               >
+                <LoginWithGoogle loginWithGoogle={onLoginWithGoogleHandle} />
                 <StyledButton onPress={onLoginFacebookHandle}>
                   <StyledFeatherIcon name={'facebook-f'} />
                   <StyledText>Login With Facebook</StyledText>
                 </StyledButton>
-              </View>
+              </React.Fragment>
 
             )}
           </React.Fragment>}

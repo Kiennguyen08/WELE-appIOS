@@ -10,7 +10,7 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, SafeAreaView} from 'react-native';
 import styled from 'styled-components/native';
 import { NavigationContext, NavigationScreenProp } from 'react-navigation';
 
@@ -22,21 +22,25 @@ import UserInfo from './UserInfo';
 
 
 const Wrapper = styled.ScrollView<{ theme: CustomTheme }>`
-  height: 100%;
+  height: 80%;
   width: 100%;
   background-color: ${props => props.theme.backgroundColor};
 `;
 
-const HeaderWrapper = styled.View`
+const HeaderWrapper = styled.SafeAreaView`
   height: 32px;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 0;
-  
+  padding: 0px;
+
+
 `;
 const StyledBodyWrapper = styled.View`
+  position: absolute;
+  margin-top: 40px;
   flex: 9;
   align-items: flex-start;
+
 `;
 
 
@@ -47,7 +51,7 @@ const StyledAntDesignIcon = styled(AntDesignIcon)`
 `;
 
 
-const StyledLineCharWrapper = styled.View`
+const StyledLineCharWrapper = styled.SafeAreaView`
   width: 80%;
 `
 
@@ -78,6 +82,12 @@ const AnotherProfile = (props: Props) => {
 
 
       <StyledBodyWrapper>
+        <TouchableOpacity onPress={onGobackHandle}>
+          <View>
+            <StyledAntDesignIcon name={'arrowleft'} />
+          </View>
+        </TouchableOpacity>
+
         <UserInfo user={user} />
 
         <StyledLineCharWrapper>
@@ -87,6 +97,7 @@ const AnotherProfile = (props: Props) => {
       </StyledBodyWrapper>
 
     </Wrapper>
+
   );
 };
 

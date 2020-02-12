@@ -7,7 +7,7 @@ import { createBottomTabNavigator, BottomTabBar } from "react-navigation-tabs";
 import Icon from "react-native-vector-icons/FontAwesome";
 import HomeNavigator from "./HomeNavigator";
 import PodcastList from "../pages/PodcastList";
-import { View } from "react-native";
+import { View,SafeAreaView} from "react-native";
 import styled, { ThemeContext } from "styled-components/native";
 import { useUnreadNotificationNumber } from "@/store/notification/hooks";
 import BillboardNavigator from "./BillboardNavigator";
@@ -19,7 +19,7 @@ import presenceSystem from "@/service/presenseSystem";
 const StyledBadge = styled.Text`
     position: absolute;
     border-radius: 7px;
-    right: -4px; 
+    right: -4px;
     bottom: 0px;
     height: 14px;
     width: 14px;
@@ -28,7 +28,7 @@ const StyledBadge = styled.Text`
     color: #696969;
     text-align: center;
     font-weight: bold;
-    
+
 `
 
 interface HomeIconProps {
@@ -38,10 +38,10 @@ interface HomeIconProps {
 const HomeIcon = (props: HomeIconProps) => {
     const unreadNumber = useUnreadNotificationNumber()
     return (
-        <View>
+        <SafeAreaView>
             <Icon name="home" color={props.tintColor} size={24} />
             {unreadNumber > 0 && <StyledBadge>{unreadNumber}</StyledBadge>}
-        </View>
+        </SafeAreaView>
     )
 }
 

@@ -7,7 +7,7 @@ import PodcastType from "@/store/podcast/types";
 import { getPodcast } from "@/store/podcast/functions";
 import { NavigationContext } from "react-navigation";
 
-const StyledPodcastWrapper = styled.View<{ size: 'big' | 'medium', theme: CustomTheme }>`
+const StyledPodcastWrapper = styled.SafeAreaView<{ size: 'big' | 'medium', theme: CustomTheme }>`
   background-color: ${props => props.theme.backgroundColor};
   height: 64px;
   width: 100%;
@@ -16,12 +16,12 @@ const StyledPodcastWrapper = styled.View<{ size: 'big' | 'medium', theme: Custom
   margin: 0;
 `;
 
-const StyledPodcastContent = styled.View`
+const StyledPodcastContent = styled.SafeAreaView`
   flex: 3;
   padding: 6px 0px 4px 0px;
 `;
 
-const StyledImageWrapper = styled.View`
+const StyledImageWrapper = styled.SafeAreaView`
   flex: 1.2;
 `;
 

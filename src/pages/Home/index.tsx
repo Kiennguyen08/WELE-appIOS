@@ -24,20 +24,20 @@ import { CustomTheme } from '@store/theme/ThemeWrapper'
 import PodcastType from '@/store/podcast/types';
 
 const Wrapper = styled.ScrollView<{ theme: CustomTheme }>`
-  height: 100%;
+  height: 80%;
   width: 100%;
   background-color: ${props => props.theme.backgroundColor}
 `;
 
 
-const StyledBodyWrapper = styled.View`
+const StyledBodyWrapper = styled.SafeAreaView`
   background-color: white;
   flex: 9;
   align-items: flex-start;
 `;
 
 
-const StyledSection = styled.View<{ theme: CustomTheme }>`
+const StyledSection = styled.SafeAreaView<{ theme: CustomTheme }>`
   width: 100%;
   margin: 0 ;
   background-color: ${props => props.theme.backgroundColor}
@@ -48,13 +48,13 @@ const StyledSectionTitle = styled.Text<{ position: 'top' | 'normal', theme: Cust
   font-size: ${props => props.position === 'top' ? '24px' : '20px'} ;
   font-weight: ${props => props.position === 'top' ? 'bold' : '900'} ;
   padding-bottom: 16px;
-  margin: ${props => props.position === 'top' ? '-4px' : '28px'} 10px 0px 10px; 
+  margin: ${props => props.position === 'top' ? '-4px' : '28px'} 10px 0px 10px;
   border-bottom-width: 1px;
   border-color: ${props => props.theme.borderSectionColor}
   background-color: ${props => props.theme.backgroundColor}
 `;
 
-const StyledSectionContent = styled.View``;
+const StyledSectionContent = styled.SafeAreaView``;
 
 
 const Home = () => {
@@ -77,7 +77,7 @@ const Home = () => {
           <Header />
 
           <StyledBodyWrapper>
-      
+
             <PodcastsThisWeek podcasts={podcastThisWeek}/>
 
             <RecentPodcast podcasts={recentPodcasts}/>

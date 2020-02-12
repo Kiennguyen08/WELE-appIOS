@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import PodcastType from '@store/podcast/types';
 import AnimatedWrapper from './AnimatedWrapper';
 import {CustomTheme, ThemeMode} from '@store/theme/ThemeWrapper'
-const Wrapper = styled.View<{theme: CustomTheme}>`
+const Wrapper = styled.SafeAreaView<{theme: CustomTheme}>`
   height: 100%;
   width: 100%;
   background-color: ${props=> props.theme.backgroundColor};
@@ -52,4 +52,3 @@ function mapStateToProps(state: any) {
 
 
 export default connect(mapStateToProps)(Main);
-

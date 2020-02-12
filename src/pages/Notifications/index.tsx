@@ -9,7 +9,7 @@
 
 import React, { useContext }  from 'react';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, SafeAreaView } from 'react-native';
 import styled from 'styled-components/native';
 import { NavigationContext } from 'react-navigation';
 import { FlatList } from 'react-native-gesture-handler';
@@ -19,22 +19,16 @@ import { useNotifications } from '@/store/notification/hooks';
 import {CustomTheme } from '@store/theme/ThemeWrapper'
 
 const Wrapper = styled.ScrollView<{theme: CustomTheme}>`
-  height: 100%;
+  height: 80%;
   width: 100%;
   background-color: ${props=> props.theme.backgroundColor}
 `;
 
-const HeaderWrapper = styled.View<{theme: CustomTheme}>`
+const HeaderWrapper = styled.SafeAreaView<{theme: CustomTheme}>`
   background-color: ${props=> props.theme.backgroundColor};
-  height: 40px;
   flex-direction: row;
-  justify-content: flex-start;
-  padding: 0;
-  align-items: center;
-  margin-bottom: 10px;
-
   border-bottom-width: 1px;
-  border-color: ${props=> props.theme.borderSectionColor}
+
 `;
 
 const StyledAntDesignIcon = styled(AntDesignIcon)`
@@ -45,7 +39,7 @@ const StyledAntDesignIcon = styled(AntDesignIcon)`
 
 
 const StyledPageTitleText = styled.Text<{theme: CustomTheme}>`
-  font-weight: bold; 
+  font-weight: bold;
   letter-spacing: 1px;
   font-size: 24px;
   margin-left: 20px;
@@ -55,31 +49,34 @@ const StyledPageTitleText = styled.Text<{theme: CustomTheme}>`
 
 
 const Notifications = () => {
-    
+
   const notifications = useNotifications()
 
   const nav = useContext(NavigationContext)
   return (
     <Wrapper>
       <HeaderWrapper>
-        <TouchableOpacity onPress={() => { 
+        <TouchableOpacity onPress={() => {
           nav.navigate('Home')
         }}>
-          <View>
+          <SafeAreaView>
             <StyledAntDesignIcon name={'arrowleft'} />
-          </View>
+          </SafeAreaView>
         </TouchableOpacity>
         <StyledPageTitleText>
             Notifications
         </StyledPageTitleText>
       </HeaderWrapper>
-      <FlatList
+
+
+    <FlatList
+
         data = {notifications}
         renderItem = {({item})=> <NotificationItem notification= {item}/>}
         keyExtractor = {item => item.id}
-      />
+    />
 
-    </Wrapper>
+  </Wrapper>
   );
 };
 

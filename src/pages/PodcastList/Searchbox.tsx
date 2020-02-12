@@ -7,7 +7,7 @@ const StyledSectionTitle = styled.Text<{ theme: CustomTheme }>`
   font-size: 20px ;
   font-weight: bold ;
   margin: 0px 10px 0px 10px;
-  margin-top: 10px; 
+  margin-top: 10px;
 `;
 
 const StyledSearchInput = styled.TextInput<{ size: 'normal' | 'big' }>`
@@ -21,7 +21,7 @@ const StyledSearchInput = styled.TextInput<{ size: 'normal' | 'big' }>`
   color: white;
 `
 
-const StyledSearchWrapper = styled.View<{ theme: CustomTheme }>`
+const StyledSearchWrapper = styled.SafeAreaView<{ theme: CustomTheme }>`
     align-items: flex-start;
     border-bottom-width: 1px;
     border-color: ${props => props.theme.borderSectionColor}

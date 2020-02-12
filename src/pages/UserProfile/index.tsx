@@ -10,7 +10,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 
-import { View, TouchableOpacity} from 'react-native';
+import { View, TouchableOpacity, SafeAreaView} from 'react-native';
 import styled from 'styled-components/native';
 import { NavigationContext } from 'react-navigation';
 
@@ -27,21 +27,25 @@ import GroupActionsButton from './GroupActionsButton';
 
 
 const Wrapper = styled.ScrollView<{theme: CustomTheme}>`
-  height: 100%;
+  height: 80%;
   width: 100%;
   background-color: ${props=> props.theme.backgroundColor};
+
 `;
 
-const HeaderWrapper = styled.View`
+const HeaderWrapper = styled.SafeAreaView`
   height: 32px;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 0;
-  
+  padding: 0px;
 `;
 const StyledBodyWrapper = styled.View`
+  position: absolute;
+  margin-top: 40px;
   flex: 9;
   align-items: flex-start;
+
+
 `;
 
 
@@ -52,7 +56,7 @@ const StyledAntDesignIcon = styled(AntDesignIcon)`
   margin: 4px 0px 0px 10px;
 `;
 
-const StyledLineCharWrapper = styled.View`
+const StyledLineCharWrapper = styled.SafeAreaView`
   width: 80%;
 `
 
@@ -79,14 +83,20 @@ const UserProfile = React.memo(() => {
         <TouchableOpacity onPress={() => {
           nav.navigate('Home')
         }}>
-          
+
             <StyledAntDesignIcon name={'arrowleft'} />
         </TouchableOpacity>
       </HeaderWrapper>
 
 
       <StyledBodyWrapper>
-  
+        <TouchableOpacity onPress={() => {
+          nav.navigate('Home')
+        }}>
+
+            <StyledAntDesignIcon name={'arrowleft'} />
+        </TouchableOpacity>
+
         <UserInfo user={currentUser}/>
         <StyledLineCharWrapper>
           {

@@ -5,11 +5,11 @@ import {CustomTheme, ThemeMode} from '@store/theme/ThemeWrapper'
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import { NavigationContext } from "react-navigation";
 
-const HeaderWrapper = styled.View`
+const HeaderWrapper = styled.SafeAreaView`
   height: 32px;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 0;
+  padding: 15px;
   align-items: center;
 `;
 

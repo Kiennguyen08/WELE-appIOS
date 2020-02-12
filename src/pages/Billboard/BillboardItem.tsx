@@ -6,7 +6,7 @@ import UserAvatar from '../../components/User/UserAvatar';
 import { CustomTheme, ThemeMode } from '@store/theme/ThemeWrapper'
 import { NavigationContext } from 'react-navigation';
 import { useCurrentUser } from '@/store/user/hooks';
-const StyledUserSection = styled.View`
+const StyledUserSection = styled.SafeAreaView`
   height: 58px;
   width: 100%;
   flex-direction: row;
@@ -26,7 +26,7 @@ const StyledOrderIndicator = styled.Text<{ color: string }>`
   color: ${props => props.color} ;
 `;
 
-const StyledUserNameWrapper = styled.View`
+const StyledUserNameWrapper = styled.SafeAreaView`
   flex: 8;
   flex-direction: column;
   margin-left: 12px;
@@ -39,7 +39,7 @@ const StyledName = styled.Text<{ theme: CustomTheme }>`
   color: ${props => props.theme.textColorH1};
 `;
 
-const StyledAvatarWrapper = styled.View`
+const StyledAvatarWrapper = styled.SafeAreaView`
   flex: 2;
 `;
 
@@ -57,7 +57,7 @@ const StyledEntypoIcon = styled(EntypoIcon)`
   margin: 8px 10px 8px 10px;
 `;
 
-const StyledActionButtonGroup = styled.View`
+const StyledActionButtonGroup = styled.SafeAreaView`
   flex: 2;
 `;
 

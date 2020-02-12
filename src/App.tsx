@@ -8,8 +8,10 @@ import { Provider } from "react-redux";
 import NavigatorTree from "./MainWrapper";
 import ThemeWrapper from "@store/theme/ThemeWrapper";
 
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-console.disableYellowBox;
+
+console.disableYellowBox = true;
 const App = () => {
 
   const requestPermission = async () => {
@@ -27,7 +29,7 @@ const App = () => {
         },
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      
+
       } else {
         Alert.alert('Permssion Error','Folder permission denied');
       }
@@ -36,16 +38,18 @@ const App = () => {
     }
   }
   useEffectOnce(() => {
-    requestPermission()
+    //requestPermission()
     SplashScreen.hide()
   })
 
   return (
-    <Provider store={store}>
-      <ThemeWrapper>
-        <NavigatorTree />
-      </ThemeWrapper>
-    </Provider>
+    <SafeAreaProvider>
+      <Provider store={store}>
+        <ThemeWrapper>
+          <NavigatorTree />
+        </ThemeWrapper>
+      </Provider>
+    </SafeAreaProvider>
   );
 };
 

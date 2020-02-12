@@ -2,7 +2,7 @@ import { GoogleSignin } from '@react-native-community/google-signin';
 import { firebase } from '@react-native-firebase/auth';
 import React from 'react'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import { View , TouchableOpacity} from 'react-native'
+import { View , TouchableOpacity, SafeAreaView} from 'react-native'
 import styled from 'styled-components/native'
 import { loginWithGoogle } from './helper';
 import {CustomTheme, ThemeMode} from '@store/theme/ThemeWrapper'
@@ -48,14 +48,14 @@ export interface Props{
 const LoginWithGoogle = (props:Props) => {
 
 
-    return <View
+    return <SafeAreaView
     // animation="bounce" easing="ease-out" iterationCount={Infinity}
     >
         <StyledButton onPress={props.loginWithGoogle }>
             <StyledFeatherIcon name={'google'} />
             <StyledText>Login With Google</StyledText>
         </StyledButton>
-    </View>
+    </SafeAreaView>
 }
 
 export default LoginWithGoogle ;

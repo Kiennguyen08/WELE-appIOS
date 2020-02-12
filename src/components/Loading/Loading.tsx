@@ -8,7 +8,7 @@ const StyledLoading = styled.ActivityIndicator`
   font-weight: 800;
 `;
 
-const StyledWrapper = styled.View<{theme: CustomTheme}>`
+const StyledWrapper = styled.SafeAreaView<{theme: CustomTheme}>`
   height: 100%;
   width: 100%;
   align-items: center;
@@ -24,4 +24,4 @@ const LoadingComponent = () => {
   );
 };
 
-export default LoadingComponent; 
+export default LoadingComponent;

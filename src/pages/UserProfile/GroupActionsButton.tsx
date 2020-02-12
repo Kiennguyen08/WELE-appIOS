@@ -27,13 +27,13 @@ const StyledLogOutButton = styled.TouchableOpacity`
 `
 
 const StyledText = styled.Text<{ theme: CustomTheme }>`
-  font-weight: bold; 
+  font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: ${props => props.theme.textColorH1};
-  
+
 `
-const StyledButtonsGroup = styled.View`
+const StyledButtonsGroup = styled.SafeAreaView`
   width: 100%;
   flex-direction: row;
   justify-content: center;

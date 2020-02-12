@@ -20,7 +20,7 @@ import { updateSliding, updatePosition } from '@/store/player/functions';
 import { usePlayer } from '@/store/player/hooks';
 
 
-const StyledContent = styled.View`
+const StyledContent = styled.SafeAreaView`
   width: 100%;
   margin: 0 ;
   height: 100%;
@@ -28,7 +28,7 @@ const StyledContent = styled.View`
 `;
 
 
-const StyledDescriptionWrapper = styled.View`
+const StyledDescriptionWrapper = styled.SafeAreaView`
     flex-direction: row;
     flex-wrap: wrap;
     flex: 0.8;
@@ -97,4 +97,3 @@ const Player = (props: Props) => {
 
 
 export default Player
-

@@ -33,14 +33,14 @@ const Wrapper = styled(LinearGradient)`
 `;
 
 
-const StyledBillboardContent = styled.View`
+const StyledBillboardContent = styled.SafeAreaView`
   flex: 4;
   padding: 20px ;
   flex-direction: row;
   padding: 20px 0px 40px 0px;
 `;
 
-const StyledValueColumn = styled.View`
+const StyledValueColumn = styled.SafeAreaView`
     flex: 1;
     height: 100%;
     flex-direction: column;

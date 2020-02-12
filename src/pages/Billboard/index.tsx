@@ -25,7 +25,7 @@ const Wrapper = styled(LinearGradient)<{theme: CustomTheme}>`
   background-color: ${props=> props.theme.backgroundColor};
 `;
 
-const StyledBillboardHeader = styled.View`
+const StyledBillboardHeader = styled.SafeAreaView`
   flex: 1;
   padding-top: 20px;
   justify-content: center;

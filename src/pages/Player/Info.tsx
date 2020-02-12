@@ -5,7 +5,7 @@ import PodcastType from "@store/podcast/types";
 import {CustomTheme, ThemeMode} from '@store/theme/ThemeWrapper'
 
 
-const StyledInfoWrapper = styled.View`
+const StyledInfoWrapper = styled.SafeAreaView`
   width: 100%;
   flex-direction: column;
   border-style: solid;
@@ -22,7 +22,7 @@ const StyledPodcastImage = styled.Image`
   margin-bottom: 20px;
 `;
 
-const StyleInfo = styled.View`
+const StyleInfo = styled.SafeAreaView`
   width: 90%;
   margin-left: auto;
   margin-right: auto;

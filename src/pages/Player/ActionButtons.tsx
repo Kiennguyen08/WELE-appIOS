@@ -6,7 +6,7 @@ import EntypoIcon from "react-native-vector-icons/Entypo";
 //@ts-ignore
 import FeatherIcon from "react-native-vector-icons/Feather";
 
-const StyledFeatureButtonGroup = styled.View`
+const StyledFeatureButtonGroup = styled.SafeAreaView`
   flex-direction: row;
   width: 90%;
   margin-left: auto;
@@ -83,7 +83,7 @@ const ActionButtons = React.memo((props: Props) => {
           name={props.playing ? "controller-paus" : "controller-play"}
         />
       </StyledPlayButton>
-      {/* 
+      {/*
       <StyledPlayButton onPress={props.fastForwardHandle}>
         <StyledEntypoIcon sizeMode={"small"} name="controller-fast-forward" />
       </StyledPlayButton> */}
